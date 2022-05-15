@@ -1,5 +1,7 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { FormComponent } from 'src/app/components/form/form.component';
 
 @Component({
   selector: 'app-main-view',
@@ -7,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-view.component.scss']
 })
 export class MainViewComponent implements OnInit {
+    task!: string;
+    type!: string;
+
   todo = [
     {
     value: 'Planned',
@@ -27,9 +32,21 @@ export class MainViewComponent implements OnInit {
     }
   ]
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+  openDialog() {
+    const dialogRef = this.dialog.open(FormComponent, {
+      data: {
+        task: this.task,
+        type: this.type
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
   }
 
   drop(event: CdkDragDrop<any[]>) {
