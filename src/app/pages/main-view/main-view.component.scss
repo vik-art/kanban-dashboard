@@ -19,7 +19,7 @@ section {
 .example-container {
     width: calc((100% - 15px * 6) / 3);
     max-width: 100%;
-    margin: 0 25px 25px 0;
+    margin: 0 15px 15px 0;
     display: inline-block;
     vertical-align: top;
   }
@@ -45,6 +45,7 @@ section {
     cursor: move;
     background: white;
     font-size: 14px;
+    margin-bottom: 5px;
     
     &.cdk-drag-disabled {
       background: rgb(230, 228, 228);
