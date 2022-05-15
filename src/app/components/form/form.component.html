@@ -6,18 +6,10 @@
         <mat-label>Task</mat-label>
         <input matInput [(ngModel)]="data.task" name="task">
       </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Type</mat-label>
-        <mat-select name="type" [(ngModel)]="data.type" name="type">
-          <mat-option *ngFor="let type of types" [value]="type.value">
-            {{type.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
     
       </div>
       <button 
-      [mat-dialog-close]="{task: data.task, type: data.type}" 
+      [mat-dialog-close]="{task: data.task}" 
       type="submit" 
       mat-raised-button class="btn">Add task</button>
 </form>

@@ -40,3 +40,8 @@ html {
         cursor: not-allowed;
     }
 }
+::-webkit-scrollbar {
+    width: 7px;
+    background-color: #ccc;
+    scroll-behavior: smooth;
+  }

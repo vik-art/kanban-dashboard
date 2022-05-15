@@ -27,7 +27,7 @@ export class MainViewComponent implements OnInit {
 
   finishedTodo = [
     {
-      value: "No finished tasks",
+      value: "Finished tasks",
       disabled: true
     }
   ]
@@ -40,13 +40,12 @@ export class MainViewComponent implements OnInit {
     const dialogRef = this.dialog.open(FormComponent, {
       width: '550px',
       data: {
-        task: this.task,
-        type: this.type
+        task: this.task
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+    dialogRef.afterClosed().subscribe(result => {     
+      this.todo.push({value: result.task, disabled: false})
     });
   }
 
@@ -60,7 +59,6 @@ export class MainViewComponent implements OnInit {
         event.previousIndex,
         event.currentIndex,
       );
-      console.log(this.todo);
     }
   }
 
