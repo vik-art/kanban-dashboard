@@ -1,32 +1,19 @@
 .form-container {
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
 }
 form {
-    width: 50%;
+    width: 100%;
     padding: 20px;
-    border: 1px solid #ccc;
     border-radius: 3px;
 }
-.btn {
-    display: inline-block;
-    background-color: rgb(17, 16, 43);
-    color: rgb(212, 206, 206);
-    padding: 10px 30px;
-    transition: all 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
-    &:hover:not(:disabled), &:focus:not(:disabled) {
-        color: rgb(17, 16, 43);
-        background-color: rgb(212, 206, 206);
-        transition: all 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    &:disabled {
-        background-color: rgb(70, 68, 156);
-        cursor: not-allowed;
-    }
+mat-form-field {
+    width: 100%;
 }
+
 .form-field {
     display: flex;
     align-items: center;

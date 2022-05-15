@@ -38,6 +38,7 @@ export class MainViewComponent implements OnInit {
   }
   openDialog() {
     const dialogRef = this.dialog.open(FormComponent, {
+      width: '550px',
       data: {
         task: this.task,
         type: this.type
