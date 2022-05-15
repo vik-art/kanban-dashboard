@@ -1,17 +1,22 @@
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 30px;
-    padding-bottom: 30px;
+.header {
+  background-color: rgb(17, 16, 43);
+  .container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  }
 }
 h1 {
-    font-size: 2rem;
+  color: rgb(212, 206, 206);
+    font-size: 1.5rem;
     font-weight: 700;
     font-family: "Lato", sans-serif;
 }
+section {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 .example-container {
-    width: 400px;
+    width: calc((100% - 25px * 6) / 3);
     max-width: 100%;
     margin: 0 25px 25px 0;
     display: inline-block;
