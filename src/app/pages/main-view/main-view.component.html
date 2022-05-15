@@ -5,6 +5,9 @@
 </header>
 <main>
     <section>
+      <div class="container">
+        <button class="btn" mat-button (click)="openDialog()">Add new task</button>
+      </div>
         <div class="container board-container">
             <div class="board-bar">
                 <div class="example-container">                 
@@ -13,9 +16,10 @@
                       #todoList="cdkDropList"
                       [cdkDropListData]="todo"
                       [cdkDropListConnectedTo]="[doneList, finishedList]"
+                      class="list"
                       (cdkDropListDropped)="drop($event)">
                       <div
-                      class="example-box" 
+                      class="box" 
                       *ngFor="let item of todo" 
                       cdkDrag
                       [cdkDragDisabled]="item.disabled"
@@ -29,10 +33,10 @@
                       #doneList="cdkDropList"
                       [cdkDropListData]="done"
                       [cdkDropListConnectedTo]="[todoList, finishedList]"
-                      class="example-list"
+                      class="list"
                       (cdkDropListDropped)="drop($event)">
                       <div 
-                      class="example-box" 
+                      class="box" 
                       *ngFor="let item of done" 
                       cdkDrag
                       [cdkDragDisabled]="item.disabled"
@@ -45,10 +49,10 @@
                       #finishedList="cdkDropList"
                       [cdkDropListData]="finishedTodo"
                       [cdkDropListConnectedTo]="[todoList, doneList]"
-                      class="example-list"
+                      class="list"
                       (cdkDropListDropped)="drop($event)">
                       <div 
-                      class="example-box" 
+                      class="box" 
                       *ngFor="let item of finishedTodo" 
                       cdkDrag
                       [cdkDragDisabled]="item.disabled"

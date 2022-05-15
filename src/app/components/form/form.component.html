@@ -1,0 +1,16 @@
+<div class="container">
+<form>
+    <h2>Add new task</h2>
+    <div class="form-container">
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Task</mat-label>
+        <input matInput [(ngModel)]="data.task" name="task">
+      </mat-form-field>
+    
+      </div>
+      <button 
+      [mat-dialog-close]="{task: data.task}" 
+      type="submit" 
+      mat-raised-button class="btn">Add task</button>
+</form>
+</div>
