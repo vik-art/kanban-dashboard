@@ -1,9 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
-export interface Response {
-  task: string
-}
+import { Response } from "../../common/interfaces/response";
 
 @Component({
   selector: 'app-form',
