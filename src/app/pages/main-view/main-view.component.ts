@@ -40,6 +40,20 @@ export class MainViewComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.taskService.getAll().subscribe(res => {
+      res.map((el: {[key: string]: any}) => {
+        console.log(el)
+        if(el['type'] === "planned") {
+          this.todo = [
+            ...this.todo,
+           {
+            value: el['value'],
+            disabled: el['disabled']
+           }
+          ]
+        }
+      })
+    })
   }
   openDialog() {
     const dialogRef = this.dialog.open(FormComponent, {
@@ -53,11 +67,12 @@ export class MainViewComponent implements OnInit {
       this.task = result.task;
       const newTask: TaskItem = {
         value: this.task,
-        disabled: true
+        disabled: false,
+        type: "planned"
       }
-      this.taskService.addTask(newTask).subscribe((res) => {
-        console.log(res);
-        this.todo.push(newTask)
+      this.taskService.addTask(newTask).subscribe(() => {
+        this.todo.push(newTask);
+        this.task = "";
       })
     });
   }
