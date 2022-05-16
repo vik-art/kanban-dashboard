@@ -4,11 +4,12 @@
     <div class="form-container">
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Task</mat-label>
-        <input matInput [(ngModel)]="data.task" name="task">
+        <input matInput [(ngModel)]="data.task" #task="ngModel" name="task" required>
       </mat-form-field>
     
       </div>
       <button 
+      [disabled]="task.invalid"
       [mat-dialog-close]="{task: data.task}" 
       type="submit" 
       mat-raised-button class="btn">Add task</button>
