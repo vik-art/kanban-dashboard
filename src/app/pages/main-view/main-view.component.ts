@@ -2,6 +2,8 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormComponent } from 'src/app/components/form/form.component';
+import { TaskService } from 'src/app/services/task.service';
+import { TaskItem } from '../../common/interfaces/task';
 
 @Component({
   selector: 'app-main-view',
@@ -32,7 +34,10 @@ export class MainViewComponent implements OnInit {
     }
   ]
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    private taskService: TaskService
+    ) { }
 
   ngOnInit(): void {
   }
@@ -44,8 +49,16 @@ export class MainViewComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {     
-      this.todo.push({value: result.task, disabled: false})
+    dialogRef.afterClosed().subscribe(result => {  
+      this.task = result.task;
+      const newTask: TaskItem = {
+        value: this.task,
+        disabled: true
+      }
+      this.taskService.addTask(newTask).subscribe((res) => {
+        console.log(res);
+        this.todo.push(newTask)
+      })
     });
   }
 
