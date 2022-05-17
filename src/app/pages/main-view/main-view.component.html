@@ -14,15 +14,15 @@
                     <div
                       cdkDropList
                       #todoList="cdkDropList"
-                      [cdkDropListData]="todo"
+                      [cdkDropListData]="planned"
                       [cdkDropListConnectedTo]="[doneList, finishedList]"
                       class="list"
                       (cdkDropListDropped)="drop($event)">
+                      <h2 class="dropbox-title">Planned tasks</h2>
                       <div
                       class="box" 
-                      *ngFor="let item of todo" 
+                      *ngFor="let item of planned" 
                       cdkDrag
-                      [cdkDragDisabled]="item.disabled"
                       >{{item.value}}</div>
                       </div>
                   </div>
@@ -31,15 +31,15 @@
                     <div
                       cdkDropList
                       #doneList="cdkDropList"
-                      [cdkDropListData]="done"
+                      [cdkDropListData]="progress"
                       [cdkDropListConnectedTo]="[todoList, finishedList]"
                       class="list"
                       (cdkDropListDropped)="drop($event)">
+                      <h2 class="dropbox-title">Tasks in progress</h2>
                       <div 
                       class="box" 
-                      *ngFor="let item of done" 
+                      *ngFor="let item of progress" 
                       cdkDrag
-                      [cdkDragDisabled]="item.disabled"
                       >{{item.value}}</div>
                     </div>
                   </div>
@@ -47,15 +47,15 @@
                     <div
                       cdkDropList
                       #finishedList="cdkDropList"
-                      [cdkDropListData]="finishedTodo"
+                      [cdkDropListData]="finished"
                       [cdkDropListConnectedTo]="[todoList, doneList]"
                       class="list"
                       (cdkDropListDropped)="drop($event)">
+                      <h2 class="dropbox-title">Finished tasks</h2>
                       <div 
                       class="box" 
-                      *ngFor="let item of finishedTodo" 
+                      *ngFor="let item of finished" 
                       cdkDrag
-                      [cdkDragDisabled]="item.disabled"
                       >{{item.value}}</div>
                     </div>
                   </div>
