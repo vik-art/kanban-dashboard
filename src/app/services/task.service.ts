@@ -15,20 +15,37 @@ export class TaskService {
   ) { }
 
   addTask(task: TaskItem): Observable<TaskItem> {
-    return this.http.post<TaskItem>(`${environment.dbUrl}/tasks.json`, task)
+    return this.http.post<TaskResponse>(`${environment.dbUrl}/tasks.json`, task)
+    .pipe(
+      map(res => {
+        return {
+          ...task,
+          id: res.name
+        }
+      })
+    )
+    }
+
+  update(task: TaskItem): Observable<TaskItem> {
+    return this.http.patch<TaskItem>(`${environment.dbUrl}/tasks/${task.id}.json`, task)
   }
 
-  getAll(): Observable<any> {
+  getAll(): Observable<TaskItem[] | null> {
     return this.http.get<any>(`${environment.dbUrl}/tasks.json`)
     .pipe(
       map(res => {
+        if(res) {
        return Object
        .keys(res)
        .map(el => {
          return {
-           ...res[el]
+           ...res[el],
+           id: el
          }
        })
+      } else {
+        return null
+      }
       })
     )
     }

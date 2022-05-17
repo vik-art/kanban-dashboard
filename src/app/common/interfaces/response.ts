@@ -3,5 +3,5 @@ export interface Response {
   }
 
   export interface TaskResponse {
-    id: string,
+    name: string,
   }

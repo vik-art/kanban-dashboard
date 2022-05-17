@@ -41,8 +41,7 @@ export class MainViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskService.getAll().subscribe(res => {
-      res.map((el: {[key: string]: any}) => {
-        console.log(el)
+      res?.map((el: {[key: string]: any}) => {
         if(el['type'] === "planned") {
           this.todo = [
             ...this.todo,
@@ -70,7 +69,8 @@ export class MainViewComponent implements OnInit {
         disabled: false,
         type: "planned"
       }
-      this.taskService.addTask(newTask).subscribe(() => {
+      this.taskService.addTask(newTask).subscribe((res) => {
+        console.log(res);
         this.todo.push(newTask);
         this.task = "";
       })
@@ -87,6 +87,8 @@ export class MainViewComponent implements OnInit {
         event.previousIndex,
         event.currentIndex,
       );
+      const tasks = event.container.data;
+      console.log(tasks)
     }
   }
 
