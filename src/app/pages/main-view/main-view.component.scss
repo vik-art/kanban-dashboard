@@ -47,13 +47,16 @@ section {
     font-size: 14px;
     margin-bottom: 5px;
     position: relative;
-    
-    &.cdk-drag-disabled {      
-      background: rgb(230, 228, 228);
-      font-weight: 700;
-      font-size: 16px;
-      cursor: auto;
-    }
+  }
+  .dropbox-title {
+    text-align: center;
+   font-size: 1.2rem;
+   font-weight: 700;
+   background-color: #11102b;
+   color: #d4cece;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   margin-bottom: 10px;
   }
   
   .cdk-drag-preview {

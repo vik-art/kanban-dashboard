@@ -1,9 +1,9 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { TaskItem } from 'src/app/common/interfaces/task';
 import { FormComponent } from 'src/app/components/form/form.component';
 import { TaskService } from 'src/app/services/task.service';
-import { TaskItem } from '../../common/interfaces/task';
 
 @Component({
   selector: 'app-main-view',
@@ -14,25 +14,11 @@ export class MainViewComponent implements OnInit {
     task!: string;
     type!: string;
 
-  todo = [
-    {
-    value: 'Planned',
-    disabled: true
-  }];
+  planned: Array<TaskItem> = [];
 
-  done = [
-    {
-      value: 'In progress',
-      disabled: true
-    }
-    ];
+  progress: Array<TaskItem> = [];
 
-  finishedTodo = [
-    {
-      value: "Finished tasks",
-      disabled: true
-    }
-  ]
+  finished: Array<TaskItem> = [];
 
   constructor(
     public dialog: MatDialog,
@@ -41,19 +27,21 @@ export class MainViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskService.getAll().subscribe(res => {
-      res?.map((el: {[key: string]: any}) => {
-        if(el['type'] === "planned") {
-          this.todo = [
-            ...this.todo,
-           {
-            value: el['value'],
-            disabled: el['disabled']
-           }
-          ]
+      res?.map(el => {
+        switch (el.type) {
+          case "planned":
+            this.planned.push(el);
+            break;
+            case "progress": 
+            this.progress.push(el);
+            break;
+            case "finished":
+              this.finished.push(el);
+              break;
         }
       })
-    })
-  }
+      })
+    }
   openDialog() {
     const dialogRef = this.dialog.open(FormComponent, {
       width: '550px',
@@ -64,20 +52,20 @@ export class MainViewComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {  
       this.task = result.task;
-      const newTask: TaskItem = {
+      const newTask = {
         value: this.task,
         disabled: false,
         type: "planned"
       }
       this.taskService.addTask(newTask).subscribe((res) => {
-        console.log(res);
-        this.todo.push(newTask);
+        this.planned.push(res);
         this.task = "";
       })
     });
   }
 
   drop(event: CdkDragDrop<any[]>) {
+console.log(event)
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -87,9 +75,10 @@ export class MainViewComponent implements OnInit {
         event.previousIndex,
         event.currentIndex,
       );
-      const tasks = event.container.data;
-      console.log(tasks)
+     
+      }
+      
     }
   }
 
-}
+

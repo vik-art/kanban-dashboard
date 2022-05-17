@@ -1,5 +1,5 @@
 export interface TaskItem {
-    id?: string,
+    id: string,
     value: string,
     disabled: boolean,
     type: string
