@@ -14,7 +14,7 @@ export class TaskService {
     private http: HttpClient
   ) { }
 
-  addTask(task: TaskItem): Observable<TaskItem> {
+  addTask(task: any): Observable<TaskItem> {
     return this.http.post<TaskResponse>(`${environment.dbUrl}/tasks.json`, task)
     .pipe(
       map(res => {
