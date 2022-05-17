@@ -45,7 +45,8 @@ export class MainViewComponent implements OnInit {
   ngOnInit(): void {
     this.taskService.getAll().subscribe(res => {
       res?.map((el) => {
-        if(el['type'] === "planned") {
+        switch(el['type']) {
+          case "planned": 
           this.todo = [
             ...this.todo,
            {
@@ -54,10 +55,31 @@ export class MainViewComponent implements OnInit {
             id: el.id
            }
           ]
+          break;
+          case "progress": 
+          this.done = [
+            ...this.done,
+            {
+              value: el['value'],
+              disabled: el['disabled'],
+              id: el.id
+             }
+          ];
+          break;
+          case "finished": 
+          this.finishedTodo = [
+            ...this.finishedTodo,
+            {
+              value: el['value'],
+              disabled: el['disabled'],
+              id: el.id
+             }
+          ];
+          break;
         }
       })
-    })
-  }
+      })
+    }
   openDialog() {
     const dialogRef = this.dialog.open(FormComponent, {
       width: '550px',
@@ -93,7 +115,7 @@ export class MainViewComponent implements OnInit {
       );
       let type = "planned";
       event.container.data.map(el => {
-        if(el.id === "progress" || el.id === "finished") {
+        if(el.id === "progress" || el.id === "finished" || el.type === "planned") {
           type = el.id;
         } else {
           const task = {
