@@ -13,6 +13,7 @@ import { TaskService } from 'src/app/services/task.service';
 export class MainViewComponent implements OnInit {
     task!: string;
     type!: string;
+    cdkDropListData!: string;
 
   planned: Array<TaskItem> = [];
 
@@ -65,7 +66,6 @@ export class MainViewComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<any[]>) {
-console.log(event)
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -75,9 +75,37 @@ console.log(event)
         event.previousIndex,
         event.currentIndex,
       );
-     
+      console.log(event.container.id)
+      switch(event.container.id) {
+        case "cdk-drop-list-0":
+          event.container.data.map((el: TaskItem) => {
+            const task = {
+              ...el,
+            type: "planned",
+            }
+            this.taskService.update(task).subscribe(() => {})
+          })
+          break;
+          case "cdk-drop-list-1":
+            event.container.data.map((el: TaskItem) => {
+              const task = {
+                ...el,
+              type: "progress",
+              }
+              this.taskService.update(task).subscribe(() => {})
+            })
+            break;
+            case "cdk-drop-list-2":
+              event.container.data.map((el: TaskItem) => {
+                const task = {
+                  ...el,
+                type: "finished",
+                }
+                this.taskService.update(task).subscribe(() => {})
+              })
+              break;
       }
-      
+    }
     }
   }
 
