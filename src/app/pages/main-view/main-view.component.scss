@@ -48,6 +48,9 @@ section {
     font-weight: 700;
     margin-bottom: 5px;
     position: relative;
+    .handle {
+      cursor: move;
+    }
   }
   mat-icon {
     cursor: pointer;

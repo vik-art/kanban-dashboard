@@ -74,7 +74,6 @@ export class MainViewComponent implements OnInit {
         event.previousIndex,
         event.currentIndex,
       );
-      console.log(event.container.id)
       switch(event.container.id) {
         case "cdk-drop-list-0":
           event.container.data.map((el: TaskItem) => {
@@ -105,6 +104,21 @@ export class MainViewComponent implements OnInit {
               break;
       }
     }
+    }
+    deleteItem(item: TaskItem) {
+      this.taskService.delete(item).subscribe(() => {
+        switch(item.type) {
+          case "planned":
+            this.planned = this.planned.filter(el => el.id !== item.id);
+            break;
+            case "progress": 
+            this.progress = this.progress.filter(el => el.id !== item.id);
+            break;
+            case "finished":
+              this.finished = this.finished.filter(el => el.id !== item.id);
+              break;
+        }
+      })
     }
   }
 
