@@ -89,7 +89,8 @@ export class MainViewComponent implements OnInit, OnDestroy {
               ...el,
             type: "planned",
             }
-           this.unSubscriber.add(this.taskService.update(task).subscribe(() => {}))
+           this.unSubscriber.add(this.taskService.update(task).subscribe(() => {
+           }))
           })
           break;
           case "cdk-drop-list-1":
@@ -98,7 +99,9 @@ export class MainViewComponent implements OnInit, OnDestroy {
                 ...el,
               type: "progress",
               }
-             this.unSubscriber.add(this.taskService.update(task).subscribe(() => {}))
+             this.unSubscriber.add(this.taskService.update(task).subscribe(() => {
+               this.progress = event.container.data;
+             }))
             })
             break;
             case "cdk-drop-list-2":
@@ -107,7 +110,8 @@ export class MainViewComponent implements OnInit, OnDestroy {
                   ...el,
                 type: "finished",
                 }
-               this.unSubscriber.add(this.taskService.update(task).subscribe(() => {}))
+               this.unSubscriber.add(this.taskService.update(task).subscribe(() => {
+               }))
               })
               break;
       }
@@ -115,19 +119,15 @@ export class MainViewComponent implements OnInit, OnDestroy {
     }
     deleteItem(item: TaskItem) {
     this.unSubscriber.add(this.taskService.delete(item).subscribe(() => {
-        switch(item.type) {
-          case "planned":
-            this.planned = this.planned.filter(el => el.id !== item.id);
-            break;
-            case "progress": 
-            this.progress = this.progress.filter(el => el.id !== item.id);
-            break;
-            case "finished":
-              this.finished = this.finished.filter(el => el.id !== item.id);
-              break;
-        }
+      this.planned = this.planned.filter(el => el.id !== item.id);
+      this.progress = this.progress.filter(el => el.id !== item.id);
+      this.finished = this.finished.filter(el => el.id !== item.id)
       }))
     }
+
+    
   }
+
+
 
 
