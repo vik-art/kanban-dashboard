@@ -1,6 +1,7 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 import { TaskItem } from 'src/app/common/interfaces/task';
 import { FormComponent } from 'src/app/components/form/form.component';
 import { TaskService } from 'src/app/services/task.service';
@@ -10,9 +11,11 @@ import { TaskService } from 'src/app/services/task.service';
   templateUrl: './main-view.component.html',
   styleUrls: ['./main-view.component.scss']
 })
-export class MainViewComponent implements OnInit {
+export class MainViewComponent implements OnInit, OnDestroy {
     task!: string;
     type!: string;
+
+    unSubscriber = new Subscription();
 
   planned: Array<TaskItem> = [];
 
@@ -24,9 +27,12 @@ export class MainViewComponent implements OnInit {
     public dialog: MatDialog,
     private taskService: TaskService
     ) { }
+  ngOnDestroy(): void {
+    this.unSubscriber.unsubscribe();
+  }
 
   ngOnInit(): void {
-    this.taskService.getAll().subscribe(res => {
+  this.unSubscriber.add(this.taskService.getAll().subscribe(res => {
       res?.map(el => {
         switch (el.type) {
           case "planned":
@@ -40,7 +46,7 @@ export class MainViewComponent implements OnInit {
               break;
         }
       })
-      })
+      }))
     }
   openDialog() {
     const dialogRef = this.dialog.open(FormComponent, {
@@ -51,17 +57,19 @@ export class MainViewComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {  
+      if(result){
       this.task = result.task;
       const newTask = {
         value: this.task,
         disabled: false,
         type: "planned"
       }
-      this.taskService.addTask(newTask).subscribe((res) => {
+     this.unSubscriber.add(this.taskService.addTask(newTask).subscribe((res) => {
         this.planned.push(res);
         this.task = "";
-      })
-    });
+      }))
+    }
+  })
   }
 
   drop(event: CdkDragDrop<any[]>) {
@@ -81,7 +89,7 @@ export class MainViewComponent implements OnInit {
               ...el,
             type: "planned",
             }
-            this.taskService.update(task).subscribe(() => {})
+           this.unSubscriber.add(this.taskService.update(task).subscribe(() => {}))
           })
           break;
           case "cdk-drop-list-1":
@@ -90,7 +98,7 @@ export class MainViewComponent implements OnInit {
                 ...el,
               type: "progress",
               }
-              this.taskService.update(task).subscribe(() => {})
+             this.unSubscriber.add(this.taskService.update(task).subscribe(() => {}))
             })
             break;
             case "cdk-drop-list-2":
@@ -99,14 +107,14 @@ export class MainViewComponent implements OnInit {
                   ...el,
                 type: "finished",
                 }
-                this.taskService.update(task).subscribe(() => {})
+               this.unSubscriber.add(this.taskService.update(task).subscribe(() => {}))
               })
               break;
       }
     }
     }
     deleteItem(item: TaskItem) {
-      this.taskService.delete(item).subscribe(() => {
+    this.unSubscriber.add(this.taskService.delete(item).subscribe(() => {
         switch(item.type) {
           case "planned":
             this.planned = this.planned.filter(el => el.id !== item.id);
@@ -118,7 +126,7 @@ export class MainViewComponent implements OnInit {
               this.finished = this.finished.filter(el => el.id !== item.id);
               break;
         }
-      })
+      }))
     }
   }
 
