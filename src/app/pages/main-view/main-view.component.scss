@@ -37,7 +37,7 @@ section {
   .box {
     padding: 20px 10px;
     text-align: center;
-    color: rgba(0, 0, 0, 0.87);
+    color: #000;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -48,9 +48,17 @@ section {
     font-weight: 700;
     margin-bottom: 5px;
     position: relative;
+    .handle {
+      cursor: move;
+    }
   }
   mat-icon {
     cursor: pointer;
+    transition: all 2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    &:hover, &:focus {
+    color: red;
+    transition: all 2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
   }
   .dropbox-title {
     text-align: center;
