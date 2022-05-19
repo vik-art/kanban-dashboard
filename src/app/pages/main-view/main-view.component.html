@@ -12,9 +12,9 @@
       </div>
 </header>
 <main>
-    <section>
+    <section [class.dark-background]="checked">
       <div class="container">
-        <button class="btn" mat-button (click)="openDialog()">Add new task</button>
+        <button [class.light-btn]="checked" class="btn" mat-button (click)="openDialog()">Add new task</button>
       </div>
         <div class="container board-container">
             <div class="board-bar">
