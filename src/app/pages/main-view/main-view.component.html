@@ -26,14 +26,15 @@
                       [cdkDropListConnectedTo]="[doneList, finishedList]"
                       class="list"
                       (cdkDropListDropped)="drop($event)">
-                      <h2 class="dropbox-title">Planned tasks</h2>
+                      <h2 [class.light-dropbox-title]="checked" class="dropbox-title">Planned tasks</h2>
                       <div
                       class="box" 
+                      [class.light-box]="checked"
                       *ngFor="let item of planned" 
                       cdkDrag
                       >
                       <div class="handle" cdkDragHandle>
-                        <svg width="24px" fill="#11102b" viewBox="0 0 24 24">
+                        <svg width="24px" viewBox="0 0 24 24">
                           <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
                           <path d="M0 0h24v24H0z" fill="none"></path>
                         </svg>
@@ -52,14 +53,15 @@
                       [cdkDropListConnectedTo]="[todoList, finishedList]"
                       class="list"
                       (cdkDropListDropped)="drop($event)">
-                      <h2 class="dropbox-title">Tasks in progress</h2>
+                      <h2 [class.light-dropbox-title]="checked" class="dropbox-title">Tasks in progress</h2>
                       <div 
                       class="box" 
+                      [class.light-box]="checked"
                       *ngFor="let item of progress" 
                       cdkDrag
                       >
                       <div class="handle" cdkDragHandle>
-                        <svg width="24px" fill="#11102b" viewBox="0 0 24 24">
+                        <svg width="24px" viewBox="0 0 24 24">
                           <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
                           <path d="M0 0h24v24H0z" fill="none"></path>
                         </svg>
@@ -77,14 +79,15 @@
                       [cdkDropListConnectedTo]="[todoList, doneList]"
                       class="list"
                       (cdkDropListDropped)="drop($event)">
-                      <h2 class="dropbox-title">Finished tasks</h2>
+                      <h2 [class.light-dropbox-title]="checked" class="dropbox-title">Finished tasks</h2>
                       <div 
                       class="box" 
+                      [class.light-box]="checked"
                       *ngFor="let item of finished" 
                       cdkDrag
                       >                      
                       <div class="handle" cdkDragHandle>
-                        <svg width="24px" fill="#11102b" viewBox="0 0 24 24">
+                        <svg width="24px"  viewBox="0 0 24 24">
                           <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
                           <path d="M0 0h24v24H0z" fill="none"></path>
                         </svg>
