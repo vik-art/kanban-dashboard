@@ -16,14 +16,23 @@ section {
   padding-bottom: 20px;
 }
 
+//calc((100% - 15px * 6) / 3)
 .example-container {
-    width: calc((100% - 15px * 6) / 3);
+    width: 100%;
     max-width: 100%;
     margin: 0 15px 15px 0;
     display: inline-block;
     vertical-align: top;
   }
   
+  @media screen and(min-width: 768px){
+    .board-bar {
+      display: flex;
+    }
+    .example-container {
+     width: calc((100% - 15px * 4) / 2)
+    }
+  }
   .list {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     height: 450px;
