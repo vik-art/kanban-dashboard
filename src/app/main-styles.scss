@@ -13,15 +13,6 @@ $input-shadow: none;
 html, body {
     height: 100%;
 }
-html {
-    background-image: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.2),
-        rgba(0, 0, 0, 0.2)
-      ),url(../assets/background.jpg);
-    background-size: cover;
-    overflow-y: auto;
-}
 
 .btn {
     display: inline-block;
