@@ -25,6 +25,7 @@
                       [cdkDropListData]="planned"
                       [cdkDropListConnectedTo]="[doneList, finishedList]"
                       class="list"
+                      [class.light-list]="checked"
                       (cdkDropListDropped)="drop($event)">
                       <h2 [class.light-dropbox-title]="checked" class="dropbox-title">Planned tasks</h2>
                       <div
@@ -52,6 +53,7 @@
                       [cdkDropListData]="progress"
                       [cdkDropListConnectedTo]="[todoList, finishedList]"
                       class="list"
+                      [class.light-list]="checked"
                       (cdkDropListDropped)="drop($event)">
                       <h2 [class.light-dropbox-title]="checked" class="dropbox-title">Tasks in progress</h2>
                       <div 
@@ -78,6 +80,7 @@
                       [cdkDropListData]="finished"
                       [cdkDropListConnectedTo]="[todoList, doneList]"
                       class="list"
+                      [class.light-list]="checked"
                       (cdkDropListDropped)="drop($event)">
                       <h2 [class.light-dropbox-title]="checked" class="dropbox-title">Finished tasks</h2>
                       <div 
