@@ -3,7 +3,8 @@
     background-color: $light-color;
   }
   &-header-title {
-    color: $dark-color
+    color: $dark-color;
+    box-shadow: $light-shadow;
   }
   &-btn {
     background-color: $light-color;
@@ -24,7 +25,7 @@
   &-dropbox-title {
     color: $dark-color;
     background-color: $light-color;
-    box-shadow: $dark-shadow;
+    box-shadow: $light-shadow;
    }
   }
 
