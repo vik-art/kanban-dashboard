@@ -1,29 +1,13 @@
+@import "../../../styles/main.scss";
+
 .header {
-  background-color: rgb(17, 16, 43);
-}
-.light-header {
-  background-color: #d4cece;
-}
-.light-header-title {
-  color: #11102b;
-}
-.light-btn {
-  background-color: rgb(212, 206, 206);
-  color: #11102b;
-  border: 1px solid #11102b;
-  transition: all 2s cubic-bezier(0.165, 0.84, 0.44, 1);
-  &:hover, &:focus {
-    transition: all 2s cubic-bezier(0.165, 0.84, 0.44, 1);
-    color: rgb(212, 206, 206);
-  background-color: #11102b;
-  }
+  background-color: $dark-color;
 }
 .container {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px 0px 10px 0px;
   }
 h1 {
-  color: rgb(212, 206, 206);
+  color: $light-color;
     font-size: 1.5rem;
     font-weight: 700;
     font-family: "Lato", sans-serif;
@@ -33,13 +17,12 @@ h1 {
   justify-content: space-between;
 }
 section {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px 0px 20px 0px;
   height: 91vh;
-  background-color: #d4cece;
+  background-color: $light-color;
 }
 .dark-background {
-  background-color: #11102b;
+  background-color: $dark-color;
 }
 
 .example-container {
@@ -59,8 +42,7 @@ section {
     }
   }
   .example-section {
-    display: flex;
-    align-content: center;
+    @include center-element;
     align-items: center;
     height: 60px;
   }
@@ -69,34 +51,28 @@ section {
     margin: 10px;
   }
   .list {
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    box-shadow: $dark-shadow;
     height: 450px;
-    background: #d4cece;
+    background: $light-color;
     border-radius: 4px;
     display: block;
     overflow-y: scroll;
   }
   
   .box {
+    @include center-element;
     padding: 20px 10px;
     text-align: center;
-    color:  #11102b;
-    display: flex;
+    color:  $dark-color;
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
     border-radius: 3px;
-    background: #d4cece;
+    background: $light-color;
     font-size: 14px;
     font-weight: 700;
     margin-bottom: 5px;
     position: relative;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-  }
-  .light-box {
-    background-color: #11102b;
-    color: #d4cece;
-    box-shadow: rgba(255, 255, 255, 0.25) 0px 14px 28px, rgba(255, 255, 255, 0.22) 0px 10px 10px;
+    box-shadow: $dark-shadow;
   }
   .handle {
     cursor: move;
@@ -106,27 +82,21 @@ section {
   }
   mat-icon {
     cursor: pointer;
-    transition: all 2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: $animation;
     &:hover, &:focus {
     color: red;
-    transition: all 2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: $animation;
     }
   }
   .dropbox-title {
     text-align: center;
    font-size: 1.2rem;
    font-weight: 700;
-   background-color: #11102b;
-   color: #d4cece;
-   padding-top: 10px;
-   padding-bottom: 10px;
+   background-color: $dark-color;
+   color: $light-color;
+   padding: 10px 0px 10px 0px;
    margin-bottom: 10px;
   }
- .light-dropbox-title {
-  color: #11102b;
-  background-color: #d4cece;
-  box-shadow: #11102b 0px 14px 28px, #11102b 0px 10px 10px;
- }
   
   .cdk-drag-preview {
     box-sizing: border-box;
@@ -150,4 +120,36 @@ section {
   
   .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+  .light {
+    &-header {
+    background-color: $light-color;
+  }
+  &-header-title {
+    color: $dark-color
+  }
+  &-btn {
+    background-color: $light-color;
+    color: $dark-color;
+    border: 1px solid $dark-color;
+    transition: $animation;
+    &:hover, &:focus {
+      transition: $animation;
+      color: $light-color;
+    background-color: $dark-color;
+    }
+  }
+  &-box {
+    background-color: $dark-color;
+    color: $light-color;
+    box-shadow: $light-shadow;
+  }
+  &-dropbox-title {
+    color: $dark-color;
+    background-color: $light-color;
+    box-shadow: $dark-shadow;
+   }
+   &-list {
+     box-shadow: $light-shadow;
+   }
   }

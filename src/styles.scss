@@ -34,7 +34,7 @@ $kanban-dashboard-theme: mat.define-light-theme((
 @include mat.all-component-themes($kanban-dashboard-theme);
 
 @import "../node_modules/bulma/bulma.sass";
-@import "../src/app/main-styles.scss";
+@import "../src/styles/main.scss";
 
 html, body { 
   height: 100%; 
@@ -43,4 +43,32 @@ html, body {
 body { 
   margin: 0; 
   font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
+html, body {
+  height: 100%;
+}
+
+.btn {
+  display: inline-block;
+  background-color: $dark-color;
+  color: $light-color;
+  padding: 10px 30px;
+  transition: $animation;
+  cursor: pointer;
+  &:hover:not(:disabled), &:focus:not(:disabled) {
+      color: $dark-color;
+      background-color: $light-color;
+      transition: $animation;
+  }
+  &:disabled {
+      background-color: $dark-color;
+      opacity: 0.7;
+      cursor: not-allowed;
+  }
+}
+::-webkit-scrollbar {
+  width: 7px;
+  background-color: $light-color;
+  scroll-behavior: smooth;
 }
