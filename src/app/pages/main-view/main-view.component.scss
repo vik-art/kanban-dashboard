@@ -1,6 +1,6 @@
 @import "../../../styles/main.scss";
 
-.header {
+header {
   background-color: $dark-color;
 }
 .container {
@@ -24,15 +24,13 @@ section {
 .dark-background {
   background-color: $dark-color;
 }
-
 .example-container {
     width: 100%;
     max-width: 100%;
     margin: 0 15px 15px 0;
     display: inline-block;
     vertical-align: top;
-  }
-  
+  }  
   @media screen and(min-width: 768px){
     .board-bar {
       display: flex;
@@ -45,8 +43,7 @@ section {
     @include center-element;
     align-items: center;
     height: 60px;
-  }
-  
+  }  
   .example-margin {
     margin: 10px;
   }
@@ -57,8 +54,7 @@ section {
     border-radius: 4px;
     display: block;
     overflow-y: scroll;
-  }
-  
+  }  
   .box {
     @include center-element;
     padding: 20px 10px;
@@ -96,60 +92,24 @@ section {
    color: $light-color;
    padding: 10px 0px 10px 0px;
    margin-bottom: 10px;
-  }
-  
+  }  
   .cdk-drag-preview {
     box-sizing: border-box;
     border-radius: 4px;
     box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
                 0 8px 10px 1px rgba(0, 0, 0, 0.14),
                 0 3px 14px 2px rgba(0, 0, 0, 0.12);
-  }
-  
+  }  
   .cdk-drag-placeholder {
     opacity: 0;
-  }
-  
+  }  
   .cdk-drag-animating {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-  }
-  
+  }  
   .example-box:last-child {
     border: none;
-  }
-  
+  }  
   .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   }
-  .light {
-    &-header {
-    background-color: $light-color;
-  }
-  &-header-title {
-    color: $dark-color
-  }
-  &-btn {
-    background-color: $light-color;
-    color: $dark-color;
-    border: 1px solid $dark-color;
-    transition: $animation;
-    &:hover, &:focus {
-      transition: $animation;
-      color: $light-color;
-    background-color: $dark-color;
-    }
-  }
-  &-box {
-    background-color: $dark-color;
-    color: $light-color;
-    box-shadow: $light-shadow;
-  }
-  &-dropbox-title {
-    color: $dark-color;
-    background-color: $light-color;
-    box-shadow: $dark-shadow;
-   }
-   &-list {
-     box-shadow: $light-shadow;
-   }
-  }
+  

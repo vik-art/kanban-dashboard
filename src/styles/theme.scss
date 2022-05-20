@@ -1,0 +1,33 @@
+.light {
+    &-header {
+    background-color: $light-color;
+  }
+  &-header-title {
+    color: $dark-color
+  }
+  &-btn {
+    background-color: $light-color;
+    color: $dark-color;
+    border: 1px solid $dark-color;
+    transition: $animation;
+    &:hover, &:focus {
+      transition: $animation;
+      color: $light-color;
+    background-color: $dark-color;
+    }
+  }
+  &-box {
+    background-color: $dark-color;
+    color: $light-color;
+    box-shadow: $light-shadow;
+  }
+  &-dropbox-title {
+    color: $dark-color;
+    background-color: $light-color;
+    box-shadow: $dark-shadow;
+   }
+  }
+
+  div.light-list {
+    box-shadow: $light-shadow;
+  }
