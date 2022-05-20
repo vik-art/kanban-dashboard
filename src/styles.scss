@@ -72,3 +72,7 @@ html, body {
   background-color: $light-color;
   scroll-behavior: smooth;
 }
+
+.mat-slide-toggle.mat-primary.mat-checked .mat-slide-toggle-bar {
+  background-color: $dark-color;
+}
