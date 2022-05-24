@@ -15,12 +15,15 @@ import { AppComponent } from './app.component';
 import { MainViewComponent } from './pages/main-view/main-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormComponent } from './components/form/form.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HomepageComponent } from './pages/homepage/homepage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainViewComponent,
-    FormComponent
+    FormComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { FormComponent } from './components/form/form.component';
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
