@@ -1,6 +1,9 @@
 <header [class.light-header]="checked">
     <div class="container header-container">
+        <div class="title-container">
         <h1 [class.light-header-title]="checked">Kanban Dashboard</h1>
+        </div>
+        <div class="button-container">
       <mat-slide-toggle
           class="example-margin"
           [color]="color"
@@ -9,9 +12,8 @@
           [disabled]="disabled">
         Change theme
       </mat-slide-toggle>
-      <div class="button-container">
-      <button class="btn">Registration</button>
-      <button class="btn">Login</button>
+      <button mat-raised-button color="accent">Registration</button>
+      <button mat-raised-button color="accent">Login</button>
       </div>
     </div>
 </header>

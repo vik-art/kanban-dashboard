@@ -4,7 +4,7 @@ header {
   background-color: $dark-color;
 }
 .container {
-    padding: 10px 0px 10px 0px;
+    padding: 15px 0px 15px 0px;
     }
 h1 {
     color: $light-color;
@@ -16,4 +16,13 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  .title-container {
+    flex-basis: 70%;
+  }
+  .button-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-basis: 30%;
   }
