@@ -1,16 +1,3 @@
-<header [class.light-header]="checked">
-    <div class="container header-container">
-        <h1 [class.light-header-title]="checked">Kanban Dashboard</h1>
-      <mat-slide-toggle
-          class="example-margin"
-          [color]="color"
-          (toggle)="onChange()"
-          [(ngModel)]="checked"
-          [disabled]="disabled">
-        Change theme
-      </mat-slide-toggle>
-      </div>
-</header>
 <main>
     <section [class.dark-background]="checked">
       <div class="container">

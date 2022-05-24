@@ -1,0 +1,19 @@
+@import "../../../styles/main.scss";
+
+header {
+  background-color: $dark-color;
+}
+.container {
+    padding: 10px 0px 10px 0px;
+    }
+h1 {
+    color: $light-color;
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-family: "Lato", sans-serif;
+  }
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }

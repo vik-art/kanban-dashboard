@@ -1,6 +1,5 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { TaskItem } from 'src/app/common/interfaces/task';
@@ -15,9 +14,7 @@ import { TaskService } from 'src/app/services/task.service';
 export class MainViewComponent implements OnInit, OnDestroy {
     task!: string;
     type!: string;
-    color: ThemePalette = 'primary';
     checked: boolean = false;
-    disabled = false;
 
     unSubscriber = new Subscription();
 
@@ -51,10 +48,6 @@ export class MainViewComponent implements OnInit, OnDestroy {
         }
       })
       }))
-    }
-
-    onChange () {
-     this.checked = !this.checked;
     }
 
   openDialog() {
